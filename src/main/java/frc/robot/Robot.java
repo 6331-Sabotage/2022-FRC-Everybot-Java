@@ -29,9 +29,9 @@ public class Robot extends TimedRobot {
 	// XboxController xbox = new XboxController(0);
 	Joystick input = new Joystick(0);
 
-	Drivetrain drivetrain = new Drivetrain(0.5);
-	Intake intake = new Intake(0.5);
-	Limelight limelight = new Limelight();
+	final Drivetrain drivetrain = new Drivetrain(0.5);
+	final Intake intake = new Intake(0.5);
+	final Limelight limelight = new Limelight();
 	
 	/**
 	* This function is run when the robot is first started up and should be used for any
@@ -92,7 +92,7 @@ public class Robot extends TimedRobot {
 	/** This function is called periodically during operator control. */
 	@Override
 	public void teleopPeriodic() {
-		drivetrain.drive(input.getRawAxis(1), input.getRawAxis(0));
+		// drivetrain.drive(input.getRawAxis(1), input.getRawAxis(0));
 		intake.run(input.getRawButton(1), input.getRawButton(2));
 		Values limelightValues = limelight.getValues();
 		limelight.post();
