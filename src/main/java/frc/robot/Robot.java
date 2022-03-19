@@ -6,6 +6,8 @@ package frc.robot;
 
 import frc.robot.components.Drivetrain;
 import frc.robot.components.Intake;
+import frc.robot.components.Limelight;
+import frc.robot.components.Limelight.Values;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Joystick;
@@ -29,6 +31,7 @@ public class Robot extends TimedRobot {
 
 	Drivetrain drivetrain = new Drivetrain(0.5);
 	Intake intake = new Intake(0.5);
+	Limelight limelight = new Limelight();
 	
 	/**
 	* This function is run when the robot is first started up and should be used for any
@@ -91,6 +94,9 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		drivetrain.drive(input.getRawAxis(1), input.getRawAxis(0));
 		intake.run(input.getRawButton(1), input.getRawButton(2));
+		Values limelightValues = limelight.getValues();
+		limelight.post();
+		// System.out.println(limelightValues);
 	}
 	
 	/** This function is called once when the robot is disabled. */
